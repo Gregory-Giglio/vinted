@@ -1,18 +1,23 @@
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 const cloudinary = require("cloudinary").v2;
+require("dotenv").config();
+const cors = require("cors");
+
+app.use(express.json());
+app.use(cors());
 
 cloudinary.config({
-    cloud_name: "dzfp79loc",
-    api_key: "264836667282714",
-    api_secret: "Wu-6jnV9TKM4qI-UUCPjbD-TakU",
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
     secure: true
   });
 
-const app = express();
-app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/vinted");
+
+mongoose.connect(process.env.MONGODB_URI);
 
 const usersRoutes = require("./routes/user.js");
 app.use(usersRoutes);
@@ -24,6 +29,6 @@ app.all("*", (req, res) => {
     res.status(400).json({message: "Page not found"});
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server has started !");
 });
