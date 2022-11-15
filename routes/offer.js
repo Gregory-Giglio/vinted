@@ -102,7 +102,7 @@ router.get("/offers", async (req, res) => {
             .limit(5)
             .skip(5 * (page -1))
             //.select("product_name product_price -_id");
-            .populate("owner", "account_id");
+            .populate("owner");
 
         const count = await Offer.countDocuments({
             product_name: title, 
