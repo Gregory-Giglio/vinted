@@ -94,7 +94,7 @@ router.get("/offers", async (req, res) => {
         }
         
 
-        const result = await Offer.find({
+        const offers = await Offer.find({
             product_name: title, 
             product_price: {$gte: priceMin, $lte: priceMax},
         })
@@ -109,7 +109,7 @@ router.get("/offers", async (req, res) => {
             product_price: {$gte: priceMin, $lte: priceMax},
         });
 
-        res.status(200).json({count: count, result});
+        res.status(200).json({count: count, offers});
     } catch (error) {
         res.status(400).json({error: error.message});
     }
