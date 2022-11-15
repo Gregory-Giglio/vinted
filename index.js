@@ -17,7 +17,6 @@ cloudinary.config({
 
 mongoose.connect(process.env.MONGODB_URI);
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 const usersRoutes = require("./routes/user.js");
 app.use(usersRoutes);
