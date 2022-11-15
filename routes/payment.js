@@ -14,7 +14,7 @@ router.post("/payment", async (req, res) => {
             description: req.body.title,
             source: stripeToken,
         });
-          console.log(response);
+          
         res.json(response.status);
     } catch (error) {
         res.status(400).json({ message: error.message });
