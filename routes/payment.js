@@ -3,7 +3,6 @@ const router = express.Router();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
-
 router.post("/payment", async (req, res) => {
     try {
         const stripeToken = req.body.token;
@@ -22,3 +21,5 @@ router.post("/payment", async (req, res) => {
     }
 
 });
+
+module.exports = router;
