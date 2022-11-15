@@ -100,7 +100,7 @@ router.get("/offers", async (req, res) => {
             product_price: {$gte: priceMin, $lte: priceMax},
         })
             .sort(sort)
-            .limit(5)
+            //.limit(5)
             .skip(5 * (page -1))
             //.select("product_name product_price -_id");
             .populate("owner");
