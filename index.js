@@ -23,6 +23,8 @@ const usersRoutes = require("./routes/user.js");
 app.use(usersRoutes);
 const offersRoutes = require("./routes/offer.js");
 app.use(offersRoutes);
+const paymentRoutes = require("./routes/payment.js");
+app.use(paymentRoutes);
 
 
 app.all("*", (req, res) => {
