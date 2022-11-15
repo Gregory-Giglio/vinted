@@ -125,7 +125,7 @@ router.get("/offer/:id", async (req, res) => {
             return res.status(400).json({message: "Missing id"});
         }
 
-        const result = await Offer.findById(req.params.id);
+        const result = await Offer.findById(req.params.id).populate("owner");;
 
         if (!result){
             return res.status(400).json({message: "Id inexist"});
